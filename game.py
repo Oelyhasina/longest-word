@@ -3,6 +3,8 @@
 import pdb
 import string
 import random
+import requests
+
 pdb.set_trace()
 class Game:
     def __init__(self):
@@ -20,3 +22,9 @@ class Game:
             else:
                 return False
         return True
+    
+    @staticmethod
+    def __check_dictionary(word):
+        response = requests.get(f"https://wagon-dictionary.herokuapp.com/{word}")
+        json_response = response.json()
+        return json_response['found']
